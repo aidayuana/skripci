@@ -47,28 +47,34 @@ class SiswaController extends Controller
                 return datatables()->of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function ($row) {
-                        return view('pages.siswa_course.modul.actions', compact('row'));
+                        $sudahMengerjakan = PenilaianModulSiswa::where('siswa_id', Auth::user()->siswa->id)
+                            ->where('modul_id', $row->id)->first();
+                        return view('pages.siswa_course.modul.actions', compact('row', 'sudahMengerjakan'));
                     })
                     ->rawColumns(['action'])
                     ->make(true);
             }
 
-            $penilaianModulSiswa = PenilaianModulSiswa::where('siswa_id', Auth::user()->siswa->id);
-            $nilaiUpload = $penilaianModulSiswa->pluck('is_upload_tugas')->toArray();
-            $labels = $sekolahCourse->modul->pluck('nama')->toArray();
-
+            // $penilaianModulSiswa = PenilaianModulSiswa::where('siswa_id', Auth::user()->siswa->id);
+            // $nilaiUpload = $penilaianModulSiswa->select('point')->toArray();
+            $modelLabels = $sekolahCourse->modul()->select('id', 'nama')->get();
+            $labels = [];
             $dataset = [];
-            foreach ($labels as $label) {
+            foreach ($modelLabels as $index => $label) {
                 $total = 0;
-                $index = array_search($label, $labels);
-                if (isset($nilaiUpload[$index])) {
-                    $total += $nilaiUpload[$index];
+                $data = PenilaianModulSiswa::where('siswa_id', Auth::user()->siswa->id)->where('modul_id', $label->id)->select('point')->first();
+                // var_dump($data);
+                if ($data) {
+                    $total = $data->point ?? 0;
                 }
+
+                $labels[] = $label->nama;
                 $dataset[] = [
-                    'name' => $label,
+                    'name' => $label->nama,
                     'data' => $total
                 ];
             }
+            // die;
 
             $chart = (new LarapexChart)->barChart()->setTitle('Penilaian Modul Siswa')
                 ->setDataset([

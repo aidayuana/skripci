@@ -35,10 +35,17 @@
         </li>
       </ul>
     </li>
+    {{-- <!-- Menu Penilaian -->
+    <li class="{{ request()->routeIs('penilaian*') ? 'active' : '' }}">
+      <a href="{{ route('penilaian.index') }}" class="link">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Penilaian</span>
+      </a>
+    </li> --}}
   </ul>
   <ul>
     <li class="mt-auto">
-      <a href="" class="link">
+      <a href="https://forms.gle/Lz7YcnxqL6yipyf89" class="link">
         <i class="ti-link"></i>
         <span>FEEDBACK</span>
       </a>

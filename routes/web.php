@@ -7,6 +7,7 @@ use App\Http\Controllers\PythonController;
 use App\Http\Controllers\SekolahCourse\GuruController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\ManualBookController;
+use App\Http\Controllers\PenilaianController; // Tambahkan pengontrol penilaian
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +47,6 @@ Route::middleware(['auth', 'role:super_admin,admin,guru'])->group(function () {
         Route::get('/{siswa}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
         Route::patch('/{siswa}', [SiswaController::class, 'update'])->name('siswa.update');
         Route::delete('/{siswa}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
-        
     });
 });
 
@@ -62,7 +62,15 @@ Route::middleware(['auth', 'role:admin,guru'])->group(function () {
     Route::patch('/modul/{modul}', [ModulController::class, 'update'])->name('modul.update');
     Route::delete('/modul/{modul}', [ModulController::class, 'destroy'])->name('modul.destroy');
 
-    
+    // Rute untuk Penilaian
+    Route::prefix('/penilaian')->group(function () {
+        Route::get('/', [PenilaianController::class, 'index'])->name('penilaian.index');
+        Route::get('/create', [PenilaianController::class, 'create'])->name('penilaian.create');
+        Route::post('/', [PenilaianController::class, 'store'])->name('penilaian.store');
+        Route::get('/{penilaian}/edit', [PenilaianController::class, 'edit'])->name('penilaian.edit');
+        Route::patch('/{penilaian}', [PenilaianController::class, 'update'])->name('penilaian.update');
+        Route::delete('/{penilaian}', [PenilaianController::class, 'destroy'])->name('penilaian.destroy');
+    });
 });
 
 Route::get('/python-course-siswa/{id}', [PythonController::class, 'index']);
