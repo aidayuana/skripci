@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penilaian_modul_siswa', function (Blueprint $table) {
+        Schema::create('nilai', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('modul_id')->constrained('modul');
-            $table->foreignId('siswa_id')->constrained('siswa');
-            $table->boolean('is_upload_tugas')->default(false);
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penilaian_modul_siswa');
+        Schema::dropIfExists('nilai');
     }
 };

@@ -59,7 +59,7 @@
   </ul>
   <ul>
     <li class="mt-auto">
-      <a href="#" class="link">
+      <a href="https://forms.gle/UytnP2okd8sNRNKm9" class="link" target="_blank">
         <i class="ti-link"></i>
         <span>FEEDBACK</span>
       </a>

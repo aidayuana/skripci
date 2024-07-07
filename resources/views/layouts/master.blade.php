@@ -116,7 +116,7 @@
     </header>
     <nav class="main-sidebar ps-menu">
       <div class="sidebar-header">
-        <div class="text fs-2">CODEAZY</div>
+        <div class="text fs-2">CODEASY</div>
         <div class="close-sidebar action-toggle">
           <i class="ti-close"></i>
         </div>
@@ -136,8 +136,7 @@
     </main>
 
     <footer>
-      Copyright © 2024 Selpu V.2
-      <span> . All rights Reserved</span>
+      Selpu V.2
     </footer>
     <div class="overlay action-toggle"></div>
   </div>
