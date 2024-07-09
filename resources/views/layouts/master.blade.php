@@ -136,7 +136,7 @@
     </main>
 
     <footer>
-      Selpu V.2
+      Copyright &copy; 2024 &mdash; Selpu V.2
     </footer>
     <div class="overlay action-toggle"></div>
   </div>

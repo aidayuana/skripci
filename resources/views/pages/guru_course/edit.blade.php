@@ -4,7 +4,7 @@
     <a href="{{ route('guru.course.index') }}" class="text-decoration-none">
       <i class="ti-arrow-circle-left"></i>
     </a>
-    <span class="ms-2">Ubah Course {{ $sekolahCourse->course->name }}</span>
+    <span class="ms-2">Daftar Modul Course {{ $sekolahCourse->course->name }}</span>
   </div>
   <div class="content-wrapper">
     <div class="row same-height">

@@ -54,9 +54,7 @@
         </div>
       </div>
     </div>
-    <div class="text-center mt-5 text-muted">
-      Copyright &copy; 2024 &mdash; Selpu V.2
-    </div>
+    
   </div>
   <script>
     $(document).ready(function() {
